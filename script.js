@@ -23,8 +23,7 @@ const displayItems = () => {
     tr.innerHTML = `
     <td>${tdTitle.textContent}</td>
     <td>${tdAuthor.textContent}</td>
-    <td class="lastData">
-    ${tdISBN.textContent} <button>${deleteButton.textContent} </button>
+    <td class="lastData">${tdISBN.textContent}<button>${deleteButton.textContent}</button>
     </td>
   `;
 
@@ -56,6 +55,7 @@ const onSubmit = (e) => {
     tdAuthor.textContent = form.elements["authorInp"].value;
     tdISBN.textContent = form.elements["ISBNInp"].value;
     tdISBN.appendChild(deleteButton);
+
     const rowObject = {
       title: tdTitle.textContent,
       author: tdAuthor.textContent,
@@ -70,7 +70,7 @@ const onSubmit = (e) => {
 };
 
 const getItemFromStorage = () => {
-  let itemsFromStorage = [];
+  let itemsFromStorage;
   localStorage.getItem("rows") === null
     ? (itemsFromStorage = [])
     : (itemsFromStorage = JSON.parse(localStorage.getItem("rows")));
@@ -81,7 +81,6 @@ const addItemToStorage = (row) => {
   let itemsFromStorage = getItemFromStorage();
 
   itemsFromStorage.push(row);
-  console.log(`itemsfromstorage${itemsFromStorage}`);
   localStorage.setItem("rows", JSON.stringify(itemsFromStorage));
 };
 //to create addedNotification when an <tr> added to table
@@ -121,13 +120,9 @@ const removeItemFromStorage = (isbn) => {
 //To Remove chosen <tr> by using delete button
 rowList.forEach((row) => {
   row.addEventListener("click", (e) => {
-    console.log(e.target.nodeName);
     if (e.target.nodeName == "BUTTON") {
-      e.target.parentElement.parentElement.remove();
-      console.log(
-        `butonun e.target.parentElement.childNodes[0] degeri : ${e.target.parentElement.childNodes[0].textContent}`
-      );
       removeItemFromStorage(e.target.parentElement.childNodes[0].textContent);
+      e.target.parentElement.parentElement.remove();
       removedNotification();
     }
   });
