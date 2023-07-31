@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="mainContainer">
+      <h1 style="margin: 15px 0px; font-size: 40px; font-weight: bold">
+        Add Book
+      </h1>
+      <div id="notificationDiv"></div>
+      <form action="" id="formId">
+        <label for="titleId">Title</label>
+        <input class="inputClass" type="text" name="titleInp" id="titleId" />
+        <label for="authorId">Author</label>
+        <input class="inputClass" type="text" name="authorInp" id="authorId" />
+        <label for="ISBNId">ISBN#</label>
+        <input class="inputClass" type="number" name="ISBNInp" id="ISBNId" />
+        <input
+          style="align-items: center"
+          class="inputClass"
+          type="submit"
+          value="Submit"
+          name="submitInp"
+          id="submitId"
+        />
+      </form>
+      <table style="border-collapse: collapse; margin: 30px 0px; width: 90%">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>ISBN</th>
+          </tr>
+        </thead>
+        <tbody id="outputTableBody">
+          <!-- <tr>
+            <td>data 1</td>
+            <td>data2</td>
+            <td class="lastData">
+              data3 <button>Sil <i></i></button>
+            </td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
